@@ -10,8 +10,9 @@
     *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 80% 0%,#1a3152 0,transparent 36%),var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;display:grid;place-items:center;padding:24px}
     main{width:min(760px,100%);background:rgba(20,29,51,.96);border:1px solid var(--line);border-radius:22px;padding:clamp(24px,6vw,48px);box-shadow:0 24px 80px #0005}
     .eyebrow{color:var(--gold);font-size:.8rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}h1{font-size:clamp(2rem,7vw,3.5rem);line-height:1.08;margin:10px 0 16px}p{color:var(--muted)}.links{display:grid;gap:12px;margin:26px 0}.link{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 18px;background:#1b2945;border:1px solid var(--line);border-radius:14px;color:var(--text);text-decoration:none}.link:hover,.link:focus-visible{border-color:var(--accent);outline:none}.link strong{display:block;color:var(--accent)}.arrow{font-size:1.3rem;color:var(--gold)}.note{border-left:3px solid var(--gold);padding:10px 14px;background:#202b43;border-radius:0 10px 10px 0;font-size:.92rem}footer{margin-top:24px;color:var(--muted);font-size:.82rem}
-    .story-form{display:grid;grid-template-columns:1fr auto;gap:10px;margin:24px 0 8px}.story-form label{grid-column:1/-1;font-weight:650}.story-form input{min-width:0;padding:13px 14px;border:1px solid var(--line);border-radius:10px;background:#0f1729;color:var(--text);font:inherit}.story-form input:focus-visible,.story-form button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}.story-form button{padding:12px 18px;border:0;border-radius:10px;background:var(--accent);color:#102033;font:inherit;font-weight:700;cursor:pointer}.story-form button:hover{background:#b4e3ff}.form-message{min-height:1.6em;margin:4px 0 16px;font-size:.9rem;color:var(--gold)}
-    @media(max-width:520px){.story-form{grid-template-columns:1fr}.story-form label{grid-column:auto}.story-form button{width:100%}}
+    .story-form{display:grid;grid-template-columns:1fr auto;gap:10px;margin:24px 0 8px}.story-form label{grid-column:1/-1;font-weight:650}.story-form input,.progress-form input{min-width:0;padding:13px 14px;border:1px solid var(--line);border-radius:10px;background:#0f1729;color:var(--text);font:inherit}.story-form input:focus-visible,.story-form button:focus-visible,.progress-form input:focus-visible,.progress-form button:focus-visible,.remove-progress:focus-visible{outline:2px solid var(--accent);outline-offset:2px}.story-form button,.progress-form button{padding:12px 18px;border:0;border-radius:10px;background:var(--accent);color:#102033;font:inherit;font-weight:700;cursor:pointer}.story-form button:hover,.progress-form button:hover{background:#b4e3ff}.form-message{min-height:1.6em;margin:4px 0 16px;font-size:.9rem;color:var(--gold)}
+    .progress-section{margin:34px 0}.progress-section h2,.category-section h2{font-size:1.35rem;margin-bottom:4px}.progress-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0 8px}.progress-form label{display:grid;gap:6px;font-weight:650}.progress-form .url-field,.progress-form button{grid-column:1/-1}.progress-form button{justify-self:start}.progress-message,.offline-message{min-height:1.5em;color:var(--gold);font-size:.9rem}.progress-list{list-style:none;padding:0;margin:16px 0;display:grid;gap:10px}.progress-item{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px;background:#1b2945;border:1px solid var(--line);border-radius:12px}.progress-details{min-width:0;overflow-wrap:anywhere}.progress-details strong,.progress-details span,.progress-details a{display:block}.progress-details span{color:var(--muted);font-size:.9rem}.progress-details a{color:var(--accent)}.remove-progress{flex:none;padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:transparent;color:var(--text);font:inherit;cursor:pointer}.remove-progress:hover{border-color:var(--gold)}.category-section{margin:30px 0}
+    @media(max-width:520px){.story-form,.progress-form{grid-template-columns:1fr}.story-form label,.progress-form .url-field,.progress-form button{grid-column:auto}.story-form button,.progress-form button{width:100%}.progress-item{align-items:flex-start}}
   </style>
 </head>
 <body>
@@ -25,31 +26,143 @@
       <button type="submit">Open story</button>
     </form>
     <p class="form-message" id="form-message" aria-live="polite"></p>
+    <section class="category-section" aria-labelledby="categories-heading">
+      <h2 id="categories-heading">Browse by category</h2>
+      <p>These links open Webnovel search results for popular genres and fanfiction.</p>
+      <div class="links">
+        <a class="link" href="https://www.webnovel.com/search?keywords=fanfiction" target="_blank" rel="noopener noreferrer"><span><strong>Fanfiction</strong>Explore fan-created stories on Webnovel.</span><span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="link" href="https://www.webnovel.com/search?keywords=fantasy" target="_blank" rel="noopener noreferrer"><span><strong>Fantasy</strong>Search fantasy stories.</span><span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="link" href="https://www.webnovel.com/search?keywords=romance" target="_blank" rel="noopener noreferrer"><span><strong>Romance</strong>Search romance stories.</span><span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="link" href="https://www.webnovel.com/search?keywords=action" target="_blank" rel="noopener noreferrer"><span><strong>Action</strong>Search action stories.</span><span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="link" href="https://www.webnovel.com/search?keywords=sci-fi" target="_blank" rel="noopener noreferrer"><span><strong>Science fiction</strong>Search science-fiction stories.</span><span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+    <section class="progress-section" aria-labelledby="progress-heading">
+      <h2 id="progress-heading">Save reading progress</h2>
+      <p>Save a story and chapter reference in this browser. Your progress list works offline after this page has been opened online; chapter text is not stored here.</p>
+      <form class="progress-form" id="progress-form">
+        <label for="progress-title">Story title
+          <input id="progress-title" name="title" type="text" maxlength="160" required>
+        </label>
+        <label for="progress-chapter">Last chapter read
+          <input id="progress-chapter" name="chapter" type="text" maxlength="120" placeholder="Chapter 24" required>
+        </label>
+        <label class="url-field" for="progress-url">Webnovel story link (optional)
+          <input id="progress-url" name="url" type="url" inputmode="url" placeholder="https://www.webnovel.com/book/...">
+        </label>
+        <button type="submit">Save progress</button>
+      </form>
+      <p class="progress-message" id="progress-message" role="status" aria-live="polite"></p>
+      <ul class="progress-list" id="progress-list"></ul>
+      <p class="offline-message" id="offline-message" role="status" aria-live="polite">Open this page online once to make the progress tracker available offline on this device.</p>
+    </section>
     <div class="links">
       <a class="link" href="https://www.webnovel.com/" target="_blank" rel="noopener noreferrer"><span><strong>Browse Webnovel</strong>Open the official website to discover and read stories.</span><span class="arrow" aria-hidden="true">↗</span></a>
       <a class="link" href="https://dynamic.webnovel.com/download" target="_blank" rel="noopener noreferrer"><span><strong>Get the official app</strong>Go to Webnovel's app download page.</span><span class="arrow" aria-hidden="true">↗</span></a>
       <a class="link" href="https://play.google.com/store/apps/details?id=com.qidian.Int.reader" target="_blank" rel="noopener noreferrer"><span><strong>Android app</strong>Open Webnovel on Google Play.</span><span class="arrow" aria-hidden="true">↗</span></a>
       <a class="link" href="https://apps.apple.com/us/app/webnovel-read-novels-manga/id1234939196" target="_blank" rel="noopener noreferrer"><span><strong>iPhone and iPad app</strong>Open Webnovel on the App Store.</span><span class="arrow" aria-hidden="true">↗</span></a>
     </div>
-    <div class="note">This page opens stories on Webnovel; it does not download or store novel chapters. Offline access and updates are managed by Webnovel through the official app, where available.</div>
+    <div class="note">This page stores only reading-progress details in your browser, not novel chapters. Use Webnovel's official app for offline chapter access and updates where supported.</div>
     <footer>External links open in a new tab. Webnovel and its app stores are third-party services.</footer>
   </main>
   <script>
     const storyForm = document.querySelector("#story-form");
     const storyInput = document.querySelector("#story-url");
     const formMessage = document.querySelector("#form-message");
+    const progressForm = document.querySelector("#progress-form");
+    const progressList = document.querySelector("#progress-list");
+    const progressMessage = document.querySelector("#progress-message");
+    const offlineMessage = document.querySelector("#offline-message");
+    const progressStorageKey = "webnovel-reader-hub-progress";
+    let savedProgress = [];
 
-    storyForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      let storyUrl;
+    function parseWebnovelUrl(value) {
       try {
-        storyUrl = new URL(storyInput.value);
+        const url = new URL(value);
+        return url.protocol === "https:" && /(^|\.)webnovel\.com$/i.test(url.hostname) ? url : null;
       } catch {
-        formMessage.textContent = "Enter a valid Webnovel story link.";
+        return null;
+      }
+    }
+
+    function isProgressEntry(entry) {
+      return entry &&
+        typeof entry.title === "string" &&
+        typeof entry.chapter === "string" &&
+        typeof entry.savedAt === "string" &&
+        (entry.url === "" || (typeof entry.url === "string" && parseWebnovelUrl(entry.url)));
+    }
+
+    function loadProgress() {
+      const stored = localStorage.getItem(progressStorageKey);
+      if (stored === null) return [];
+      const entries = JSON.parse(stored);
+      if (!Array.isArray(entries) || !entries.every(isProgressEntry)) {
+        throw new Error("Saved progress has an unexpected format.");
+      }
+      return entries;
+    }
+
+    function persistProgress() {
+      try {
+        localStorage.setItem(progressStorageKey, JSON.stringify(savedProgress));
+        return true;
+      } catch (error) {
+        progressMessage.textContent = `Could not save progress in this browser: ${error instanceof Error ? error.message : "storage is unavailable."}`;
+        return false;
+      }
+    }
+
+    function renderProgress() {
+      progressList.replaceChildren();
+      if (savedProgress.length === 0) {
+        const emptyItem = document.createElement("li");
+        emptyItem.textContent = "No saved reading progress yet.";
+        progressList.append(emptyItem);
         return;
       }
 
-      if (storyUrl.protocol !== "https:" || !/(^|\.)webnovel\.com$/i.test(storyUrl.hostname)) {
+      savedProgress.forEach((entry, index) => {
+        const item = document.createElement("li");
+        item.className = "progress-item";
+        const details = document.createElement("div");
+        details.className = "progress-details";
+        const title = document.createElement("strong");
+        title.textContent = entry.title;
+        const chapter = document.createElement("span");
+        chapter.textContent = `${entry.chapter} · Saved ${new Date(entry.savedAt).toLocaleString()}`;
+        details.append(title, chapter);
+
+        if (entry.url) {
+          const storyLink = document.createElement("a");
+          storyLink.href = entry.url;
+          storyLink.target = "_blank";
+          storyLink.rel = "noopener noreferrer";
+          storyLink.textContent = "Open story on Webnovel";
+          details.append(storyLink);
+        }
+
+        const removeButton = document.createElement("button");
+        removeButton.className = "remove-progress";
+        removeButton.type = "button";
+        removeButton.dataset.index = String(index);
+        removeButton.textContent = "Remove";
+        item.append(details, removeButton);
+        progressList.append(item);
+      });
+    }
+
+    try {
+      savedProgress = loadProgress();
+      renderProgress();
+    } catch (error) {
+      progressMessage.textContent = `Could not load saved progress: ${error instanceof Error ? error.message : "storage is unavailable."}`;
+    }
+
+    storyForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const storyUrl = parseWebnovelUrl(storyInput.value);
+      if (!storyUrl) {
         formMessage.textContent = "For safety, enter a link from webnovel.com.";
         return;
       }
@@ -57,6 +170,59 @@
       formMessage.textContent = "";
       window.open(storyUrl.href, "_blank", "noopener,noreferrer");
     });
+
+    progressForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(progressForm);
+      const title = formData.get("title").trim();
+      const chapter = formData.get("chapter").trim();
+      const storyLink = formData.get("url").trim();
+      if (!title || !chapter) {
+        progressMessage.textContent = "Enter both a story title and the last chapter read.";
+        return;
+      }
+      if (storyLink && !parseWebnovelUrl(storyLink)) {
+        progressMessage.textContent = "For safety, use an HTTPS story link from webnovel.com.";
+        return;
+      }
+
+      savedProgress.unshift({
+        title,
+        chapter,
+        url: storyLink,
+        savedAt: new Date().toISOString()
+      });
+      if (!persistProgress()) {
+        savedProgress.shift();
+        return;
+      }
+
+      progressForm.reset();
+      progressMessage.textContent = "Reading progress saved on this device.";
+      renderProgress();
+    });
+
+    progressList.addEventListener("click", (event) => {
+      if (!(event.target instanceof Element)) return;
+      const removeButton = event.target.closest("button[data-index]");
+      if (!removeButton) return;
+      const index = Number(removeButton.dataset.index);
+      if (!Number.isInteger(index) || index < 0 || index >= savedProgress.length) return;
+      const [removedEntry] = savedProgress.splice(index, 1);
+      if (!persistProgress()) {
+        savedProgress.splice(index, 0, removedEntry);
+        renderProgress();
+        return;
+      }
+      progressMessage.textContent = "Saved progress removed.";
+      renderProgress();
+    });
+
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./sw.js").catch((error) => {
+        offlineMessage.textContent = `Offline tracker setup failed: ${error instanceof Error ? error.message : "service workers are unavailable."}`;
+      });
+    }
   </script>
 </body>
 </html>
